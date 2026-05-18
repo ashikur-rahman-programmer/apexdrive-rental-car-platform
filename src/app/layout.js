@@ -2,6 +2,7 @@ import { Bruno_Ace, Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/lib/Providers";
 import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/ui/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
           <div>
             <Navbar />
             {children}
+            <Footer />
           </div>
         </Providers>
       </body>
