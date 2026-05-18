@@ -90,7 +90,7 @@ const AvailableCarsSection = () => {
   const cars = mockCarsData;
   return (
     <section className="w-full bg-primary py-16 px-4 sm:px-6">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto">
         {/* ─── SECTION HEADER ─── */}
         <div className="text-center flex flex-col items-center gap-2 mb-12">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none">
