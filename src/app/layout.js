@@ -23,14 +23,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning className="h-full">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.className} ${brunoAce.variable} min-h-full flex flex-col bg-[#080807] text-[#FFFDF5] antialiased`}
+        className={`${inter.className} ${brunoAce.variable} bg-[#080807] text-[#FFFDF5] antialiased`}
       >
         <Providers>
           <div className="premium-bg-mesh absolute pointer-events-none" />
 
-          <div className="relative z-10 flex-1 flex flex-col w-full">
+          <div>
             <Navbar />
             {children}
           </div>

@@ -1,62 +1,10 @@
-import Navbar from "@/components/shared/Navbar";
-
-// Mock Database Metrics Template Structure Match Korar Jonno
-const features = [
-  {
-    id: 1,
-    title: "Clean & Modern Design",
-    desc: "Crafted with dynamic user experience patterns.",
-    icon: "🎨",
-  },
-  {
-    id: 2,
-    title: "Pixel Perfect",
-    desc: "Flawless layouts with sharp responsive structural alignment.",
-    icon: "📐",
-  },
-  {
-    id: 3,
-    title: "High-Quality Images",
-    desc: "Optimized frames for showcasing premium automobile assets.",
-    icon: "📷",
-  },
-  {
-    id: 4,
-    title: "Dark Theme",
-    desc: "Premium black aesthetic emphasizing product contrast.",
-    icon: "🌙",
-  },
-  {
-    id: 5,
-    title: "Free Google Fonts",
-    desc: "Integrated with professional typography engine rules.",
-    icon: "🔤",
-  },
-  {
-    id: 6,
-    title: "Easy To Use",
-    desc: "Modular utility component structure for seamless scaling.",
-    icon: "⚙️",
-  },
-  {
-    id: 7,
-    title: "Organized Layout",
-    desc: "Strictly balanced geometric block sections framework.",
-    icon: "🗂️",
-  },
-  {
-    id: 8,
-    title: "100% Customizable",
-    desc: "Easily adjust colors, grids, components, and logic structures.",
-    icon: "📝",
-  },
-];
+import Banner from "@/components/shared/Banner";
 
 export default function Home() {
   return (
-    <>
-      <h1>home page </h1>
-    </>
+    <div className="container mx-auto">
+      <Banner />
+    </div>
     // <div className="min-h-screen font-sans select-none pb-24">
     //   {/* ──────────────────────────────────────────────────────────────
     //      1. HEADER / NAVBAR AREA
