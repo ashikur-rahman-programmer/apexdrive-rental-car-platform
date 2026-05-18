@@ -1,26 +1,137 @@
 @import "tailwindcss";
+@import "@heroui/styles";
 
+/* ─── 1. VARIABLES FIRST ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-bg: #080807; /* Pure Deep Dark Layer */
+  --secondary-bg: #161618; /* Premium Card Surface */
+  --brand-gold: #ffbd37; /* Signature Luxury Gold Accent */
+  --main-text: #fffdf5; /* Matte Pearl Off-White Text */
+  --font-bruno-ace: ""; /* Will be injected by layout variable */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ☀️ LIGHT MODE OVERRIDES */
+.light {
+  --primary-bg: #f8f8f6; /* Warm Matte Light Gray */
+  --secondary-bg: #ffffff; /* Crisp Premium White Cards */
+  --brand-gold: #d49206; /* High Contrast Luxury Gold */
+  --main-text: #171715; /* Slate Charcoal Black Text */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── 2. BASE RESET & ENGINE ─── */
+@theme {
+  --color-primary: var(--primary-bg);
+  --color-secondary: var(--secondary-bg);
+  --color-gold: var(--brand-gold);
+  --color-light: var(--main-text);
+  --font-app: var(--font-bruno-ace);
+}
+
+@layer utilities {
+  .font-app {
+    font-family: var(--font-bruno-ace);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--primary-bg) !important;
+  color: var(--main-text);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* ─── 3. BACKGROUND GLOW INJECTORS ─── */
+body::before {
+  content: "";
+  position: absolute;
+  top: -15%;
+  left: -10%;
+  width: 80vw;
+  height: 80vw;
+  max-width: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 189, 55, 0.08) 0%,
+    rgba(255, 189, 55, 0.02) 45%,
+    rgba(8, 8, 7, 0) 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 35%;
+  right: -15%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 900px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 189, 55, 0.05) 0%,
+    rgba(255, 189, 55, 0.01) 50%,
+    rgba(8, 8, 7, 0) 75%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.light body::before {
+  opacity: 0.2;
+}
+.light body::after {
+  opacity: 0.1;
+}
+
+/* ─── 4. UTILITY COMPONENTS ─── */
+.premium-card {
+  background-color: var(--secondary-bg);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.light .premium-card {
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.premium-card:hover {
+  border-color: rgba(255, 189, 55, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(255, 189, 55, 0.03);
+  transform: translateY(-2px);
+}
+
+::selection {
+  background-color: var(--brand-gold);
+  color: var(--primary-bg);
+}
+
+/* 👑 CUSTOM SCROLLBAR ENGINE FIXED FOR POSTCSS */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #222225;
+  border: 2px solid var(--primary-bg);
+  border-radius: 100px;
+}
+/* Fixed Light Mode Scrollbar Target Path syntax syntax */
+.light ::-webkit-scrollbar-thumb {
+  background: #c1c1be;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-gold);
 }
