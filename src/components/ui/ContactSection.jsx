@@ -49,7 +49,7 @@ const ContactSection = () => {
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-radial-[circle,rgba(255,189,55,0.015)_0%,transparent_70%] pointer-events-none" />
 
-      <div className="container mx-auto max-w-7xl relative z-10">
+      <div className="container mx-auto relative z-10">
         {/* ─── SECTION HEADER ─── */}
         <div className="text-center flex flex-col items-center gap-2 mb-12">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none">

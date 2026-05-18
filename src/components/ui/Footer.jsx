@@ -58,7 +58,7 @@ const Footer = () => {
       {/* Subtle Background Accent Ring */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-radial-[circle,rgba(255,189,55,0.01)_0%,transparent_70%] pointer-events-none" />
 
-      <div className="container mx-auto max-w-7xl relative z-10">
+      <div className="container mx-auto relative z-10">
         {/* ─── TOP SECTION: GRID MATRIX ─── */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-12 border-b border-white/[0.03]">
           {/* 🏢 COL 1: BRAND ARCHITECTURE (5-Cols) */}
