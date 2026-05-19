@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-// 👑 HeroUI থেকে প্রয়োজনীয় কম্পোনেন্ট ইমপোর্ট (আপনার সেটআপ অনুযায়ী পাথ চেক করে নিবেন)
+
 import {
   Form,
   TextField,
@@ -28,18 +28,22 @@ const LoginPage = () => {
     const formData = new FormData(e.currentTarget);
     const { email, password } = Object.fromEntries(formData.entries());
 
-    try {
-      // 🎯 Auth লগইন লজিক (Firebase / Better Auth / Custom API)
-      // const res = await signInWithEmail(email, password);
+    const { data, error } = await authClient.signIn.email({
+      email,
+      password,
+      callBackURL: "/",
+    });
 
-      toast.success("Welcome back! Login successful.");
+    if (data) {
+      toast.success("Login successful!");
       router.refresh();
       router.push("/");
-    } catch (error) {
-      toast.error(error?.message || "Invalid email or password.");
-    } finally {
-      setLoading(false);
     }
+    if (error) {
+      toast.error(error?.message || "Login failed. Try again.");
+    }
+
+    setLoading(false);
   };
 
   const handleGoogleLogin = async () => {
