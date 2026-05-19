@@ -15,6 +15,7 @@ import {
 import { FaGoogle } from "react-icons/fa";
 import { FiLock, FiMail, FiUser, FiImage } from "react-icons/fi";
 import { toast } from "react-toastify";
+import { authClient } from "@/lib/auth-client";
 
 const Register = () => {
   const router = useRouter();
@@ -25,22 +26,28 @@ const Register = () => {
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-    const { name, email, photoUrl, password } = Object.fromEntries(
+    const { name, email, imageUrl, password } = Object.fromEntries(
       formData.entries(),
     );
 
-    try {
-      // 🎯 আপনার Auth রেজিস্ট্রেশন লজিক (Firebase / Better Auth / Custom API)
-      // const res = await createUserWithEmail(email, password, name, photoUrl);
+    const { data, error } = await authClient.signUp.email({
+      name,
+      imageUrl,
+      email,
+      password,
+      callbackURL: "/login",
+    });
 
+    if (data) {
       toast.success("Registration successful! Please login.");
       router.refresh();
-      router.push("/login"); // 👈 সাকসেস হলে লগইন পেজে রিডাইরেক্ট
-    } catch (error) {
-      toast.error(error?.message || "Registration failed. Try again.");
-    } finally {
-      setLoading(false);
+      router.push("/login");
     }
+    if (error) {
+      toast.error(error?.message || "Registration failed. Try again.");
+    }
+
+    setLoading(false);
   };
 
   const handleGoogleLogin = async () => {
@@ -114,9 +121,9 @@ const Register = () => {
 
           {/* Photo URL Field */}
           <div className="flex flex-col gap-2">
-            <TextField isRequired name="photoUrl" type="url" className="w-full">
+            <TextField isRequired name="imageUrl" type="url" className="w-full">
               <Label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2 mb-2">
-                <FiImage className="text-gold" /> Photo URL
+                <FiImage className="text-gold" /> Image URL
               </Label>
               <Input
                 placeholder="https://example.com/avatar.jpg"
