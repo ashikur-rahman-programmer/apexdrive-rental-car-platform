@@ -46,7 +46,7 @@ const CarCard = ({ car }) => {
           <p className="text-xs text-light/50 truncate">{car.location}</p>
         </div>
 
-        <p className="text-xs text-light/60 line-clamp-2 mb-4 h-8 leading-relaxed">
+        <p className="text-xs text-light/60 line-clamp-2 mb-4 leading-relaxed">
           {car.description}
         </p>
 
