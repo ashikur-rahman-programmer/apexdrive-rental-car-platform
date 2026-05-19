@@ -16,6 +16,7 @@ import {
 import { FaGoogle } from "react-icons/fa";
 import { FiLock, FiMail } from "react-icons/fi";
 import { toast } from "react-toastify";
+import { authClient } from "@/lib/auth-client";
 
 const LoginPage = () => {
   const router = useRouter();
