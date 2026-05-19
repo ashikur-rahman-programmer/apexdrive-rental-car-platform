@@ -10,9 +10,29 @@ import {
 } from "react-icons/fi";
 
 const AddCar = () => {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    const formattedData = {
+      ...data,
+      dailyRentPrice: Number(data.dailyRentPrice),
+      seatCapacity: Number(data.seatCapacity),
+      availability: formData.get("availability") === "on",
+    };
+
+    const res = await fetch("http://localhost:8000/cars", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formattedData),
+    });
+    const result = await res.json();
   };
+
   return (
     <section className="w-full bg-primary py-16 px-4 sm:px-6 relative overflow-hidden flex justify-center items-center">
       <div className="w-full max-w-3xl bg-secondary border border-white/[0.04] p-6 sm:p-10 rounded-3xl relative z-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
@@ -32,43 +52,36 @@ const AddCar = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div className="flex flex-col gap-2">
               <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
-                {/* <FiCar className="text-gold" /> */}
                 Car Name
               </label>
               <input
                 type="text"
                 name="name"
                 required
-                // value={formData.name}
-                // onChange={handleChange}
-                placeholder="e.g. Rolls-Royce Phantom"
+                placeholder="Enter Car Name"
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
               />
             </div>
 
             <div className="flex flex-col gap-2">
               <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
-                <FiDollarSign className="text-gold" /> Daily Rent Price ($)
+                Daily Rent Price ($)
               </label>
               <input
                 type="number"
                 name="dailyRentPrice"
                 required
-                // value={formData.dailyRentPrice}
-                // onChange={handleChange}
-                placeholder="e.g. 500"
+                placeholder="Enter Price"
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
               />
             </div>
 
             <div className="flex flex-col gap-2">
               <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
-                <FiGrid className="text-gold" /> Car Type
+                Car Type
               </label>
               <select
                 name="carType"
-                // value={formData.carType}
-                // onChange={handleChange}
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light focus:outline-none focus:border-gold/30 transition-colors duration-300 cursor-pointer"
               >
                 <option value="SUV" className="bg-secondary text-light">
@@ -91,15 +104,13 @@ const AddCar = () => {
 
             <div className="flex flex-col gap-2">
               <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
-                <FiUsers className="text-gold" /> Seat Capacity
+                Seat Capacity
               </label>
               <input
                 type="number"
                 name="seatCapacity"
                 required
-                // value={formData.seatCapacity}
-                // onChange={handleChange}
-                placeholder="e.g. 5"
+                placeholder="Seat no..."
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
               />
             </div>
@@ -107,44 +118,38 @@ const AddCar = () => {
 
           <div className="flex flex-col gap-2">
             <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
-              <FiImage className="text-gold" /> Image URL
+              Image URL
             </label>
             <input
               type="url"
               name="imageUrl"
               required
-              // value={formData.imageUrl}
-              // onChange={handleChange}
-              placeholder="https://i.postimg.cc/... or https://i.ibb.co/..."
+              placeholder="Enter car image url"
               className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
             />
           </div>
 
           <div className="flex flex-col gap-2">
             <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
-              <FiMapPin className="text-gold" /> Pickup Location
+              Pickup Location
             </label>
             <input
               type="text"
               name="location"
               required
-              // value={formData.location}
-              // onChange={handleChange}
-              placeholder="e.g. Gulshan, Dhaka"
+              placeholder="Enter location"
               className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
             />
           </div>
 
           <div className="flex flex-col gap-2">
             <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
-              <FiFileText className="text-gold" /> Description
+              Description
             </label>
             <textarea
               name="description"
               required
               rows={4}
-              // value={formData.description}
-              // onChange={handleChange}
               placeholder="Write premium descriptions about vehicle condition, features, etc..."
               className="w-full bg-primary border border-white/[0.06] rounded-xl p-4 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300 resize-none"
             />
@@ -155,19 +160,12 @@ const AddCar = () => {
               type="checkbox"
               id="availability"
               name="availability"
-              // checked={formData.availability}
-              // onChange={handleChange}
               className="w-4 h-4 rounded border-white/[0.06] bg-primary text-gold focus:ring-0 focus:ring-offset-0 cursor-pointer accent-gold"
             />
             <label
               htmlFor="availability"
               className="text-xs font-semibold uppercase tracking-wider text-light/70 cursor-pointer select-none flex items-center gap-2"
             >
-              {/* <FiCheckCircle
-                className={
-                  formData.availability ? "text-gold" : "text-light/30"
-                }
-              />{" "} */}
               Available for Rent
             </label>
           </div>
@@ -179,7 +177,7 @@ const AddCar = () => {
               className="w-full sm:w-auto min-w-[160px] bg-gold text-primary font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-[#ffe2a4] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(255,189,55,0.15)]"
             >
               {/* {loading ? "Submitting..." : "Submit Listing"} */}
-              hey
+              Submit
             </button>
           </div>
         </form>
