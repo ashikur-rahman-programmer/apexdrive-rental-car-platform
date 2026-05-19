@@ -27,9 +27,12 @@ const AvailableCarsSection = async () => {
       {/* ─── CARS GRID SYSTEM ─── */}
       {/* Mobile: 1, Tablet: 2, Small Desktop: 3, Large Desktop: 4 */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-        {cars.slice(0, 6).map((car) => (
-          <CarCard key={car._id} car={car} />
-        ))}
+        {cars
+          .filter((car) => car.availability === true)
+          .slice(0, 6)
+          .map((car) => (
+            <CarCard key={car._id} car={car} />
+          ))}
       </div>
     </section>
   );

@@ -1,15 +1,10 @@
 "use client";
-import {
-  FiCheckCircle,
-  FiDollarSign,
-  FiFileText,
-  FiGrid,
-  FiImage,
-  FiMapPin,
-  FiUsers,
-} from "react-icons/fi";
+
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const AddCar = () => {
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,6 +25,18 @@ const AddCar = () => {
       },
       body: JSON.stringify(formattedData),
     });
+
+    if (res.ok) {
+      toast.success("Car added successfully!");
+      e.target.reset();
+      router.refresh();
+      router.push("/my-added-cars");
+    }
+
+    if (!res.ok) {
+      toast.error("Something went wrong!");
+    }
+
     const result = await res.json();
   };
 

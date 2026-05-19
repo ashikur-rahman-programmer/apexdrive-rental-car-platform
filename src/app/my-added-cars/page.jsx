@@ -4,4 +4,4 @@ const MyAddedCarsPage = () => {
   return <div>my added cars page</div>;
 };
 
-export default MyAddedCardsPage;
+export default MyAddedCarsPage;

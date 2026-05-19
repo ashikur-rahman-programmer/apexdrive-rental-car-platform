@@ -30,13 +30,13 @@ const CarCard = ({ car }) => {
             className="object-cover w-full h-full rounded-xl transition-transform duration-500 group-hover:scale-[1.04]"
           />
 
-          {/* {!car.availability && (
+          {!car.availability && (
             <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center">
               <span className="font-app text-xs font-bold tracking-widest text-gold border border-gold/30 bg-gold/5 px-4 py-2 rounded-xl uppercase">
                 Not Available
               </span>
             </div>
-          )} */}
+          )}
         </div>
 
         <div className="space-y-1 mb-4">
@@ -72,9 +72,9 @@ const CarCard = ({ car }) => {
           </span>
         </div>
 
-        <Link href={`/cars/${car._id}`} className="flex-1 max-w-[120px]">
+        <Link href={`/explore-car/${car._id}`} className="flex-1 max-w-[120px]">
           <button
-            // disabled={!car.availability}
+            disabled={!car.availability}
             className="w-full flex items-center justify-center gap-1.5 bg-gold text-primary font-semibold text-xs py-2.5 px-3 rounded-lg cursor-pointer transition-all duration-300 hover:bg-[#ffe2a4] active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-gold"
           >
             <FiEye className="text-sm" />
