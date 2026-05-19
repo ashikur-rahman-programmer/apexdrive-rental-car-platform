@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
+html,
+body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: clip !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  scroll-behavior: smooth !important;
+}
+
 :root {
   --primary-bg: #080807;
   --secondary-bg: #161618;
