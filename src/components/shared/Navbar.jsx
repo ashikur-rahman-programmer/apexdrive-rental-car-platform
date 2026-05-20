@@ -5,9 +5,15 @@ import { useState } from "react";
 import NavLink from "./NavLink";
 import ThemeToggle from "../ui/ThemeToggle";
 import { FiArrowUpRight } from "react-icons/fi";
+import { useSession } from "@/lib/auth-client";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { data: session } = useSession();
+  const user = session?.user;
+
+  console.log(user);
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-b-gray-700 bg-background/70 backdrop-blur-lg">
