@@ -52,9 +52,9 @@ const Register = () => {
     await authClient.signIn.social({
       provider: "google",
     });
-    toast.success("Logged in with Google successfully!");
     router.refresh();
     router.push("/");
+    toast.success("Logged in with Google successfully!");
   };
 
   return (

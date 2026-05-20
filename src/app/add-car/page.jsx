@@ -1,10 +1,15 @@
 "use client";
 
+import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 const AddCar = () => {
   const router = useRouter();
+
+  const { data: session } = useSession();
+  const user = session?.user;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -13,6 +18,7 @@ const AddCar = () => {
 
     const formattedData = {
       ...data,
+      email: user?.email,
       dailyRentPrice: Number(data.dailyRentPrice),
       seatCapacity: Number(data.seatCapacity),
       availability: formData.get("availability") === "on",
