@@ -26,15 +26,13 @@ const Register = () => {
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-    const { name, email, imageUrl, password } = Object.fromEntries(
-      formData.entries(),
-    );
+    const allData = Object.fromEntries(formData.entries());
 
     const { data, error } = await authClient.signUp.email({
-      name,
-      imageUrl,
-      email,
-      password,
+      name: allData.name,
+      email: allData.email,
+      image: allData.image,
+      password: allData.password,
       callbackURL: "/login",
     });
 
@@ -87,6 +85,7 @@ const Register = () => {
                 <FiUser className="text-gold" /> Full Name
               </Label>
               <Input
+                name="name"
                 placeholder="Enter your name"
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
               />
@@ -112,6 +111,7 @@ const Register = () => {
                 <FiMail className="text-gold" /> Email Address
               </Label>
               <Input
+                name="email"
                 placeholder="Enter your email"
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
               />
@@ -121,11 +121,12 @@ const Register = () => {
 
           {/* Photo URL Field */}
           <div className="flex flex-col gap-2">
-            <TextField isRequired name="imageUrl" type="url" className="w-full">
+            <TextField isRequired name="image" type="url" className="w-full">
               <Label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2 mb-2">
                 <FiImage className="text-gold" /> Image URL
               </Label>
               <Input
+                name="image"
                 placeholder="https://example.com/avatar.jpg"
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
               />
@@ -157,6 +158,7 @@ const Register = () => {
                 <FiLock className="text-gold" /> Password
               </Label>
               <Input
+                name="password"
                 placeholder="••••••••"
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
               />

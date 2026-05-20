@@ -53,8 +53,8 @@ const LoginPage = () => {
       // await signInWithGoogle();
 
       toast.success("Logged in with Google successfully!");
-      router.refresh();
-      router.push("/");
+      // router.refresh();
+      // router.push("/");
     } catch (error) {
       toast.error("Google authentication failed.");
     }

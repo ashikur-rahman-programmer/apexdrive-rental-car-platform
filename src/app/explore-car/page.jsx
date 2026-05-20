@@ -1,5 +1,8 @@
 import SearchAndFiltered from "@/components/shared/SearchAndFiltered";
 import CarCard from "@/components/ui/CarCard";
+import { auth } from "@/lib/auth";
+import { authClient } from "@/lib/auth-client";
+import { headers } from "next/headers";
 import Link from "next/link";
 import { FiSearch } from "react-icons/fi";
 
