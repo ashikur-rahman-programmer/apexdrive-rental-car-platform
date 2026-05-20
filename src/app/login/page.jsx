@@ -48,16 +48,12 @@ const LoginPage = () => {
   };
 
   const handleGoogleLogin = async () => {
-    try {
-      // 🎯 Google Auth লগইন লজিক
-      // await signInWithGoogle();
-
-      toast.success("Logged in with Google successfully!");
-      // router.refresh();
-      // router.push("/");
-    } catch (error) {
-      toast.error("Google authentication failed.");
-    }
+    await authClient.signIn.social({
+      provider: "google",
+    });
+    toast.success("Logged in with Google successfully!");
+    router.refresh();
+    router.push("/");
   };
 
   return (
