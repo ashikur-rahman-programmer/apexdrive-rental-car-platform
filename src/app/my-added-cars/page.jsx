@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { FiPlus } from "react-icons/fi";
 import { auth } from "@/lib/auth";
@@ -19,9 +21,12 @@ const MyAddedCarsPage = async () => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      cache: "no-cache",
     },
   );
-  const cars = await res.json();
+  const data = await res.json();
+
+  const cars = Array.isArray(data) ? data : [];
 
   return (
     <section className="w-full bg-primary min-h-screen py-12 px-4 sm:px-6 lg:px-8">

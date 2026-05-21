@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";
@@ -18,16 +20,17 @@ const MyBookingsPage = async () => {
   const { token } = await auth.api.getToken({ headers: await headers() });
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/bookings/${user?.id}`,
+    `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/bookings/${user.id}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      cache: "no-cache",
     },
   );
-  const bookings = await res.json();
+  const data = await res.json();
 
-  console.log(bookings);
+  const bookings = Array.isArray(data) ? data : [];
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-12 text-light min-h-screen dark bg-primary">
