@@ -17,26 +17,6 @@ import DeleteAlert from "./DeleteAlert";
 export default function AddedCarsCard({ cars }) {
   const router = useRouter();
 
-  // 🗑️ গাড়ি ডিলিট করার ফাংশন (উইথ কনফার্মেশন)
-  // const handleDelete = async (carId) => {
-  //   const confirmDelete = window.confirm(
-  //     "Are you sure you want to delete this car listing?",
-  //   );
-  //   if (!confirmDelete) return;
-
-  //   const res = await fetch(`http://127.0.0.1:5000/cars/${carId}`, {
-  //     method: "DELETE",
-  //   });
-  //   const data = await res.json();
-
-  //   if (data.deletedCount > 0) {
-  //     toast.success("Car listing deleted successfully!");
-  //     router.refresh(); // সার্ভার কম্পোনেন্টের ডাটা রিফ্রেশ করবে
-  //   } else {
-  //     toast.error("Failed to delete the car.");
-  //   }
-  // };
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {cars.map((car) => (

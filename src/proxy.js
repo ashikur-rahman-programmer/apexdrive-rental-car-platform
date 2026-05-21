@@ -1,3 +1,6 @@
+import dns from "node:dns/promises";
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
 import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";

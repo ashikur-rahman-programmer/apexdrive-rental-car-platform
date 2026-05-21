@@ -194,10 +194,8 @@ const AddCar = () => {
           <div className="pt-4 border-t border-white/[0.03]">
             <button
               type="submit"
-              // disabled={loading}
               className="w-full sm:w-auto min-w-[160px] bg-gold text-primary font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-[#ffe2a4] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(255,189,55,0.15)]"
             >
-              {/* {loading ? "Submitting..." : "Submit Listing"} */}
               Submit
             </button>
           </div>
