@@ -1,20 +1,9 @@
 import Link from "next/link";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@heroui/react";
-import { FiPlus, FiCalendar, FiDollarSign } from "react-icons/fi";
+import { FiPlus } from "react-icons/fi";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import Image from "next/image";
 import { ImBlocked } from "react-icons/im";
 import AddedCarsCard from "@/components/shared/AddedCarsCard";
-// import AddedCarsCard from "@/components/shared/AddedCarsCard";
-// import DeleteButton from "./DeleteButton";
 
 const MyAddedCarsPage = async () => {
   const session = await auth.api.getSession({
@@ -22,9 +11,16 @@ const MyAddedCarsPage = async () => {
   });
   const user = session?.user;
 
-  const res = await fetch(`http://localhost:8000/my-cars?email=${user.email}`, {
-    cache: "no-store",
-  });
+  const { token } = await auth.api.getToken({ headers: await headers() });
+
+  const res = await fetch(
+    `${process.env.APEXDRIVE_SERVER_URL}/my-cars?email=${user.email}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
   const cars = await res.json();
 
   return (

@@ -41,11 +41,14 @@ const UpdateCarModal = ({ car }) => {
     updateData.dailyRentPrice = Number(updateData.dailyRentPrice);
     updateData.availability = updateData.availability === "true";
 
-    const res = await fetch(`http://localhost:8000/cars/${car._id}`, {
-      method: "PATCH",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(updateData),
-    });
+    const res = await fetch(
+      `${process.env.APEXDRIVE_SERVER_URL}/cars/${car._id}`,
+      {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(updateData),
+      },
+    );
 
     const data = await res.json();
 

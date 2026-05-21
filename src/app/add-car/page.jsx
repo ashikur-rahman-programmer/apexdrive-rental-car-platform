@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -26,10 +26,13 @@ const AddCar = () => {
       availability: formData.get("availability") === "on",
     };
 
-    const res = await fetch("http://localhost:8000/cars", {
+    const { data: tokenData } = await authClient.token();
+
+    const res = await fetch(`${process.env.APEXDRIVE_SERVER_URL}/cars`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${tokenData.token}`,
       },
       body: JSON.stringify(formattedData),
     });

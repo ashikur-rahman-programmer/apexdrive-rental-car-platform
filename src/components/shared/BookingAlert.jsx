@@ -42,7 +42,7 @@ const BookingAlert = ({ car }) => {
       userId: user?.id,
     };
 
-    const res = await fetch(`http://localhost:8000/bookings`, {
+    const res = await fetch(`${process.env.APEXDRIVE_SERVER_URL}/bookings`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

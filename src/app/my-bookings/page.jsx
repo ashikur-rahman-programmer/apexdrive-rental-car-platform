@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   FiArrowRight,
   FiCalendar,
-  FiClock,
   FiMapPin,
   FiUserCheck,
 } from "react-icons/fi";
@@ -16,7 +15,16 @@ const MyBookingsPage = async () => {
   });
   const user = session?.user;
 
-  const res = await fetch(`http://localhost:8000/bookings/${user?.id}`);
+  const { token } = await auth.api.getToken({ headers: await headers() });
+
+  const res = await fetch(
+    `${process.env.APEXDRIVE_SERVER_URL}/bookings/${user?.id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
   const bookings = await res.json();
 
   console.log(bookings);

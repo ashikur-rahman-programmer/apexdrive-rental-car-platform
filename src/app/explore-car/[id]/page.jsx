@@ -1,4 +1,6 @@
 import BookingAlert from "@/components/shared/BookingAlert";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import Image from "next/image";
 import {
   FiGrid,
@@ -13,8 +15,14 @@ import {
 const CarDetails = async ({ params }) => {
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:8000/cars/${id}`, {
-    cache: "no-store",
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+
+  const res = await fetch(`${process.env.APEXDRIVE_SERVER_URL}/cars/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
   const car = await res.json();
 

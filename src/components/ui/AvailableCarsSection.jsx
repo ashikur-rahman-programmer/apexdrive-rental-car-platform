@@ -1,7 +1,7 @@
 import CarCard from "./CarCard";
 
 const AvailableCarsSection = async () => {
-  const res = await fetch("http://localhost:8000/cars");
+  const res = await fetch("${process.env.APEXDRIVE_SERVER_URL}/cars");
   const cars = await res.json();
 
   return (

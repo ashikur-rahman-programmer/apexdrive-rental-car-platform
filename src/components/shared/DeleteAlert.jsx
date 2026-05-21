@@ -8,9 +8,12 @@ const DeleteAlert = ({ carId, carName }) => {
   const router = useRouter();
 
   const handleDeleteCar = async () => {
-    const res = await fetch(`http://localhost:8000/cars/${carId}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `${process.env.APEXDRIVE_SERVER_URL}/cars/${carId}`,
+      {
+        method: "DELETE",
+      },
+    );
 
     const data = await res.json();
 
