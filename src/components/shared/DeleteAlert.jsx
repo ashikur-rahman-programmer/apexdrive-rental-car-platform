@@ -8,7 +8,18 @@ const DeleteAlert = ({ carId, carName }) => {
   const router = useRouter();
 
   const handleDeleteCar = async () => {
-    console.log("clicked");
+    const res = await fetch(`http://localhost:8000/cars/${carId}`, {
+      method: "DELETE",
+    });
+
+    const data = await res.json();
+
+    if (data.deletedCount > 0) {
+      router.refresh();
+      toast.success("Car listing deleted successfully!");
+    } else {
+      toast.error("Failed to delete the car.");
+    }
   };
   return (
     <AlertDialog>

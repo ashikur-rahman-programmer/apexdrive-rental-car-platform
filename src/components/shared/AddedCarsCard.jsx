@@ -116,12 +116,6 @@ export default function AddedCarsCard({ cars }) {
 
               {/* ডিলিট বাটন */}
               <DeleteAlert carId={car._id} carName={car.name} />
-              {/* <button
-                // onClick={() => handleDelete(car._id)}
-                className="bg-red-500/5 border border-red-500/10 text-red-400 hover:bg-red-500/20 hover:border-red-500/30 py-2.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer"
-              >
-                <FiTrash2 className="text-xs" /> Delete
-              </button> */}
             </div>
           </div>
         </div>
