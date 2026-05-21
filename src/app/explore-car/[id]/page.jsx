@@ -111,12 +111,12 @@ const CarDetails = async ({ params }) => {
               <p className="text-[10px] uppercase tracking-wider text-light/40">
                 Daily Rate
               </p>
-              <div className="flex items-baseline text-light">
+              <div className="flex items-center text-light whitespace-nowrap">
                 <span className="text-2xl font-bold text-gold">$</span>
                 <span className="text-4xl font-extrabold tracking-tight text-light ml-0.5">
                   {car.dailyRentPrice}
                 </span>
-                <span className="text-xs text-light/40 ml-1">/ day</span>
+                <span className="text-sm text-light/40 ml-1">/ day</span>
               </div>
             </div>
 

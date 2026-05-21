@@ -33,7 +33,7 @@ const MyBookingsPage = async () => {
           </p>
         </div>
         <div className="bg-white/[0.02] border border-white/[0.05] px-4 py-2.5 rounded-xl self-start md:self-auto">
-          <span className="text-xs text-light/50">Total Bookings cars:</span>{" "}
+          <span className="text-xs text-light/50">Total Booked cars:</span>{" "}
           <span className="text-gold font-bold font-mono text-sm ml-1">
             {bookings.length}
           </span>

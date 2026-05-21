@@ -14,11 +14,9 @@ import {
 import { authClient, useSession } from "@/lib/auth-client";
 import { Spinner } from "@heroui/react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -27,11 +25,10 @@ const Navbar = () => {
   const user = session?.user;
 
   const handleLogout = async () => {
-    authClient.signOut();
+    await authClient.signOut();
     setIsMenuOpen(false);
+    window.location.href = "/login";
     toast.success("Logout successfully! please login again.");
-    router.refresh();
-    router.push("/login");
   };
 
   return (
