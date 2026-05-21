@@ -38,29 +38,23 @@ const UpdateCarModal = ({ car }) => {
     const formData = new FormData(e.currentTarget);
     const updateData = Object.fromEntries(formData.entries());
 
-    updatedData.dailyRentPrice = Number(updatedData.dailyRentPrice);
-    updatedData.availability = updatedData.availability === "true";
+    updateData.dailyRentPrice = Number(updateData.dailyRentPrice);
+    updateData.availability = updateData.availability === "true";
 
-    // const formData = new FormData(e.currentTarget);
-    // const updatedData = Object.fromEntries(formData.entries());
+    const res = await fetch(`http://localhost:8000/cars/${car._id}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(updateData),
+    });
 
-    // // অবজেক্টের টাইপ কাস্টিং (যেহেতু ফর্ম ডাটা সবসময় স্ট্রিং রিটার্ন করে)
-    // updatedData.dailyRentPrice = Number(updatedData.dailyRentPrice);
-    // updatedData.availability = updatedData.availability === "true";
+    const data = await res.json();
 
-    // const res = await fetch(`http://127.0.0.1:5000/cars/${car._id}`, {
-    //   method: "PUT",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(updatedData),
-    // });
-
-    // const data = await res.json();
-    // if (data.modifiedCount > 0) {
-    //   toast.success("Car details updated successfully!");
-    //   router.refresh(); // ডেটা রিফ্রেশ করবে
-    // } else {
-    //   toast.error("No changes made or update failed.");
-    // }
+    if (data.modifiedCount > 0) {
+      toast.success("Car details updated successfully!");
+      router.refresh();
+    } else {
+      toast.error("No changes made or update failed.");
+    }
   };
 
   return (
@@ -84,8 +78,9 @@ const UpdateCarModal = ({ car }) => {
               <ModalHeading className="text-light uppercase tracking-wide font-bold mt-2">
                 Update Listing
               </ModalHeading>
-              <p className="mt-1.5 text-xs text-light/40 text-left">
-                Modify fields for <span className="text-gold">{car.name}</span>.
+              <p className="mt-1.5 text-xs text-light/40 text-left ">
+                Modify fields for <span className="text-gold ">{car.name}</span>
+                .
               </p>
             </ModalHeader>
 

@@ -12,6 +12,7 @@ import {
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import UpdateCarModal from "./UpdateCarModal";
+import DeleteAlert from "./DeleteAlert";
 
 export default function AddedCarsCard({ cars }) {
   const router = useRouter();
@@ -73,7 +74,7 @@ export default function AddedCarsCard({ cars }) {
           {/* কার ডিটেইলস বডি */}
           <div className="p-5 flex flex-col flex-grow">
             <div className="flex justify-between items-start gap-2 mb-2">
-              <h3 className="text-lg font-bold text-light tracking-wide group-hover:text-gold transition-colors">
+              <h3 className="uppercase text-lg font-bold text-light tracking-wide group-hover:text-gold transition-colors">
                 {car.name}
               </h3>
               <div className="flex items-center text-gold font-mono font-bold text-lg">
@@ -114,12 +115,13 @@ export default function AddedCarsCard({ cars }) {
               <UpdateCarModal car={car} />
 
               {/* ডিলিট বাটন */}
-              <button
+              <DeleteAlert carId={car._id} carName={car.name} />
+              {/* <button
                 // onClick={() => handleDelete(car._id)}
                 className="bg-red-500/5 border border-red-500/10 text-red-400 hover:bg-red-500/20 hover:border-red-500/30 py-2.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
                 <FiTrash2 className="text-xs" /> Delete
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
