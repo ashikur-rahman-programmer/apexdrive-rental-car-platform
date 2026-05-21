@@ -1,3 +1,4 @@
+import BookingAlert from "@/components/shared/BookingAlert";
 import Image from "next/image";
 import {
   FiGrid,
@@ -105,7 +106,7 @@ const CarDetails = async ({ params }) => {
             </p>
           </div>
 
-          <div className="pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
               <p className="text-[10px] uppercase tracking-wider text-light/40">
                 Daily Rate
@@ -119,12 +120,7 @@ const CarDetails = async ({ params }) => {
               </div>
             </div>
 
-            {/* 👑 বুকিং বাটন কম্পোনেন্ট পাসিং
-            <BookNowBtn
-              carId={car._id}
-              carName={car.name}
-              availability={car.availability}
-            /> */}
+            <BookingAlert car={car} />
           </div>
         </div>
       </div>
