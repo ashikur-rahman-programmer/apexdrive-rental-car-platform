@@ -13,8 +13,7 @@ const ExploreCar = async ({ searchParams }) => {
   const selectedType = params?.type || "All";
 
   const res = await fetch(
-    `${process.env.APEXDRIVE_SERVER_URL}/cars?search=${searchQuery}&type=${selectedType}`,
-    { cache: "no-cache" },
+    `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/cars?search=${searchQuery}&type=${selectedType}`,
   );
   const cars = await res.json();
 

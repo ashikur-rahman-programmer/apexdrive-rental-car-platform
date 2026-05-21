@@ -19,11 +19,14 @@ const CarDetails = async ({ params }) => {
     headers: await headers(),
   });
 
-  const res = await fetch(`${process.env.APEXDRIVE_SERVER_URL}/cars/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/cars/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
-  });
+  );
   const car = await res.json();
 
   if (!car) {

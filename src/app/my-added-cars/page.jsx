@@ -14,7 +14,7 @@ const MyAddedCarsPage = async () => {
   const { token } = await auth.api.getToken({ headers: await headers() });
 
   const res = await fetch(
-    `${process.env.APEXDRIVE_SERVER_URL}/my-cars?email=${user.email}`,
+    `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/my-cars?email=${user.email}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

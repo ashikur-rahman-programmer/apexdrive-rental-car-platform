@@ -18,7 +18,7 @@ const MyBookingsPage = async () => {
   const { token } = await auth.api.getToken({ headers: await headers() });
 
   const res = await fetch(
-    `${process.env.APEXDRIVE_SERVER_URL}/bookings/${user?.id}`,
+    `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/bookings/${user?.id}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

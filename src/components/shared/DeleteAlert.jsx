@@ -9,7 +9,7 @@ const DeleteAlert = ({ carId, carName }) => {
 
   const handleDeleteCar = async () => {
     const res = await fetch(
-      `${process.env.APEXDRIVE_SERVER_URL}/cars/${carId}`,
+      `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/cars/${carId}`,
       {
         method: "DELETE",
       },

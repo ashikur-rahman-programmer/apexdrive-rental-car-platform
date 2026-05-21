@@ -28,14 +28,17 @@ const AddCar = () => {
 
     const { data: tokenData } = await authClient.token();
 
-    const res = await fetch(`${process.env.APEXDRIVE_SERVER_URL}/cars`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${tokenData.token}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/cars`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${tokenData.token}`,
+        },
+        body: JSON.stringify(formattedData),
       },
-      body: JSON.stringify(formattedData),
-    });
+    );
 
     if (res.ok) {
       toast.success("Car added successfully!");

@@ -42,13 +42,16 @@ const BookingAlert = ({ car }) => {
       userId: user?.id,
     };
 
-    const res = await fetch(`${process.env.APEXDRIVE_SERVER_URL}/bookings`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/bookings`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bookingData),
       },
-      body: JSON.stringify(bookingData),
-    });
+    );
 
     const data = await res.json();
 

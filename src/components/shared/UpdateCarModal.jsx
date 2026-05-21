@@ -42,7 +42,7 @@ const UpdateCarModal = ({ car }) => {
     updateData.availability = updateData.availability === "true";
 
     const res = await fetch(
-      `${process.env.APEXDRIVE_SERVER_URL}/cars/${car._id}`,
+      `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/cars/${car._id}`,
       {
         method: "PATCH",
         headers: { "content-type": "application/json" },
