@@ -7,6 +7,7 @@ import {
   FiFileText,
   FiCheckCircle,
   FiXCircle,
+  FiTrendingUp,
 } from "react-icons/fi";
 
 const CarDetails = async ({ params }) => {
@@ -57,6 +58,16 @@ const CarDetails = async ({ params }) => {
             <h1 className="font-app text-3xl sm:text-4xl font-bold tracking-tight text-light uppercase mt-3">
               {car.name}
             </h1>
+
+            <div className="mt-3.5 inline-flex items-center gap-2 bg-gold/10 border border-gold/20 px-3.5 py-1.5 rounded-xl">
+              <FiTrendingUp className="text-gold text-xs animate-pulse" />
+              <span className="text-[11px] font-semibold tracking-wide text-light/90">
+                Total Booked:{" "}
+                <span className="text-gold font-bold font-mono text-xs ml-0.5">
+                  {car.bookingCount || 0} times
+                </span>
+              </span>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">

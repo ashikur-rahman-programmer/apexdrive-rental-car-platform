@@ -60,7 +60,7 @@ const Navbar = () => {
         </ul>
 
         {/* Desktop Right Side (Login + Theme Toggle) */}
-        <ul className="hidden items-center gap-5 md:flex">
+        <ul className="hidden items-center gap-5 md:flex suppressHydrationWarning={true}">
           <li>
             <ThemeToggle />
           </li>

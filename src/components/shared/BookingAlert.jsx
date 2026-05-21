@@ -53,10 +53,10 @@ const BookingAlert = ({ car }) => {
     const data = await res.json();
 
     if (data.insertedId) {
-      toast.success("Booking added successfully!");
       e.target.reset();
       router.refresh();
       router.push("/my-bookings");
+      toast.success("Booking added successfully!");
     }
   };
 
