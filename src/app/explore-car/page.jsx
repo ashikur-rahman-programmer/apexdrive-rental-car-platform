@@ -33,7 +33,6 @@ const ExploreCar = async ({ searchParams }) => {
           </h2>
         </div>
 
-        {/* ─── SEARCH & FILTER CONTROL BAR ─── */}
         <SearchAndFiltered
           searchQuery={searchQuery}
           selectedType={selectedType}

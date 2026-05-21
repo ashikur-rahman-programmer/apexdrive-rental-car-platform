@@ -8,7 +8,6 @@ const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // 👑 Exact hydration and script tags engine injection tracking block
   useEffect(() => {
     setMounted(true);
   }, []);

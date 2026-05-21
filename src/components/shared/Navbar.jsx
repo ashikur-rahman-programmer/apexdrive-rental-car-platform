@@ -148,12 +148,9 @@ const Navbar = () => {
           )}
         </ul>
 
-        {/* 📱 Mobile Controls Container (Toggle Button + Hamburger Side by Side) */}
         <div className="flex items-center gap-3 md:hidden">
-          {/* Mobile-এ সরাসরি হেডারে থিম চেঞ্জ করার বাটন */}
           <ThemeToggle />
 
-          {/* Mobile Menu Open/Close Button */}
           <button
             className="text-yellow-400 hover:text-yellow-300 transition cursor-pointer p-1"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -210,8 +207,6 @@ const Navbar = () => {
                 My Bookings
               </NavLink>
             </li>
-
-            {/* Mobile Dropdown Bottom (Only Login Link as Toggle is now outside) */}
 
             {isPending ? (
               <Spinner color="success" />

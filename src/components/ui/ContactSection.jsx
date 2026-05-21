@@ -4,17 +4,8 @@ import { useState } from "react";
 import { FiMail, FiPhone, FiMapPin, FiClock, FiSend } from "react-icons/fi";
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 💡 আপনার ব্যাকএন্ড API বা MongoDB-তে সাবমিট করার লজিক এখানে বসাবেন
-    console.log("Contact Form Submitted:", formData);
   };
 
   const contactInfo = [
@@ -46,11 +37,9 @@ const ContactSection = () => {
 
   return (
     <section className="w-full bg-primary py-16 px-4 sm:px-6 relative overflow-hidden">
-      {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-radial-[circle,rgba(255,189,55,0.015)_0%,transparent_70%] pointer-events-none" />
 
       <div className="container mx-auto relative z-10">
-        {/* ─── SECTION HEADER ─── */}
         <div className="text-center flex flex-col items-center gap-2 mb-12">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none">
             Get In Touch
@@ -67,9 +56,7 @@ const ContactSection = () => {
           </p>
         </div>
 
-        {/* ─── CONTACT CORE GRID ─── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* 📍 LEFT COLUMN: CONTACT DETAILS (4-Cols on Desktop) */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 w-full">
               {contactInfo.map((info) => (
@@ -92,7 +79,6 @@ const ContactSection = () => {
               ))}
             </div>
 
-            {/* Subtle branding layer */}
             <div className="hidden lg:block premium-card bg-secondary/40 border border-dashed border-white/[0.02] rounded-2xl p-6 text-center">
               <span className="font-app text-lg font-bold tracking-widest text-light/20 block select-none">
                 APEXDRIVE ENGINE
@@ -100,7 +86,6 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* ✉️ RIGHT COLUMN: INTERACTIVE FORM (7-Cols on Desktop) */}
           <div className="lg:col-span-7">
             <form
               onSubmit={handleSubmit}
@@ -116,10 +101,6 @@ const ContactSection = () => {
                     type="text"
                     required
                     placeholder="John Doe"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
                     className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
                   />
                 </div>
@@ -133,10 +114,6 @@ const ContactSection = () => {
                     type="email"
                     required
                     placeholder="johndoe@example.com"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
                     className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
                   />
                 </div>
@@ -151,10 +128,6 @@ const ContactSection = () => {
                   type="text"
                   required
                   placeholder="Fleet Booking Inquiry"
-                  value={formData.subject}
-                  onChange={(e) =>
-                    setFormData({ ...formData, subject: e.target.value })
-                  }
                   className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
                 />
               </div>
@@ -168,10 +141,6 @@ const ContactSection = () => {
                   rows="4"
                   required
                   placeholder="Tell us about your requirements..."
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
                   className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300 resize-none"
                 />
               </div>

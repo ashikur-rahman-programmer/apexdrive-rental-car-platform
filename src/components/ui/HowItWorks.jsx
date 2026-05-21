@@ -3,7 +3,6 @@
 import { FiSearch, FiCalendar, FiKey } from "react-icons/fi";
 
 const HowItWorks = () => {
-  // ─── STEP PROCESS MATRIX ───
   const steps = [
     {
       id: "01",
@@ -30,11 +29,9 @@ const HowItWorks = () => {
 
   return (
     <section className="w-full bg-primary py-16 px-4 sm:px-6 relative overflow-hidden">
-      {/* Background Subtle Linear Mesh or Radial Glow */}
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-radial-[circle,rgba(255,189,55,0.01)_0%,transparent_65%] pointer-events-none" />
 
       <div className=" relative z-10">
-        {/* ─── SECTION HEADER ─── */}
         <div className="text-center flex flex-col items-center gap-2 mb-16">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none">
             Process Engine
@@ -51,31 +48,25 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        {/* ─── STEPS GRID SYSTEM WITH CONNECTORS ─── */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8 relative">
           {steps.map((step, index) => (
             <div
               key={step.id}
               className="relative flex flex-col items-center text-center group"
             >
-              {/* ─── DESKTOP CONNECTING LINES (Hidden on Mobile) ─── */}
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-10 left-[60%] w-[80%] h-[1px] border-t border-dashed border-white/[0.08] group-hover:border-gold/20 transition-colors duration-500 z-0" />
               )}
 
-              {/* Step Number Top Float */}
               <span className="absolute -top-12 text-5xl font-extrabold text-white/[0.02] tracking-wider select-none font-app group-hover:text-gold/[0.04] transition-colors duration-500">
                 {step.id}
               </span>
 
-              {/* Icon Node Container */}
               <div className="relative z-10 w-20 h-20 rounded-2xl bg-secondary border border-white/[0.04] flex items-center justify-center mb-6 shadow-[0_10px_30px_rgba(0,0,0,0.4)] group-hover:border-gold/30 group-hover:shadow-[0_0_25px_rgba(255,189,55,0.1)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                {/* Outer pulsing thin ring on hover */}
                 <div className="absolute inset-0 rounded-2xl border border-gold/0 group-hover:scale-110 group-hover:border-gold/10 transition-all duration-500" />
                 {step.icon}
               </div>
 
-              {/* Title & Description Info */}
               <div className="space-y-2 max-w-xs relative z-10">
                 <h3 className="text-base font-semibold text-light uppercase tracking-wide font-app">
                   {step.title}

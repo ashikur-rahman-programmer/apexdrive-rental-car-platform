@@ -3,7 +3,6 @@
 import { FiShield, FiClock, FiCheckCircle, FiTrendingUp } from "react-icons/fi";
 
 const WhyChooseUs = () => {
-  // ─── FEATURES DATA MATRIX ───
   const features = [
     {
       id: 1,
@@ -37,11 +36,9 @@ const WhyChooseUs = () => {
 
   return (
     <section className="w-full bg-primary py-16 px-4 sm:px-6 relative overflow-hidden">
-      {/* Background Decorative Subtle Accents */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-radial-[circle,rgba(255,189,55,0.015)_0%,transparent_70%] pointer-events-none" />
 
       <div className="relative z-10">
-        {/* ─── SECTION HEADER ─── */}
         <div className="text-center flex flex-col items-center gap-2 mb-12">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none">
             Why Choose Us
@@ -58,20 +55,16 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
-        {/* ─── FEATURES GRID ─── */}
-        {/* Mobile: 1 Col, Tablet: 2 Cols, Desktop: 4 Cols */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {features.map((feature) => (
             <div
               key={feature.id}
               className="premium-card bg-secondary border border-white/[0.04] rounded-2xl p-6 flex flex-col items-start gap-4 transition-all duration-300 hover:border-gold/20"
             >
-              {/* Icon Wrapper Component */}
               <div className="p-3 rounded-xl bg-gold/5 border border-gold/10 flex items-center justify-center shadow-[0_4px_20px_rgba(255,189,55,0.05)] group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
 
-              {/* Text Content */}
               <div className="space-y-2">
                 <h3 className="text-base font-semibold text-light tracking-wide uppercase font-app">
                   {feature.title}

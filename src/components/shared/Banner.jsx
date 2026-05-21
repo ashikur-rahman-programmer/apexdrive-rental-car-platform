@@ -8,14 +8,12 @@ const Banner = () => {
   return (
     <section className="relative w-full flex items-center justify-center overflow-hidden px-4 py-8 md:py-12">
       <div className=" flex flex-col lg:grid lg:grid-cols-2 gap-8 md:gap-12 items-center relative z-10 w-full ">
-        {/* ─── LEFT COLUMN: TEXT CONTENT ─── */}
         <div className="flex flex-col items-start gap-4 sm:gap-5 text-left w-full max-w-2xl justify-self-start">
           <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold flex items-center gap-2 bg-gold/5 px-3 py-1.5 rounded-full border border-gold/10">
             <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
             THE ULTIMATE FLEET ARCHITECTURE
           </span>
 
-          {/* Strict 2-Line Headline Structure */}
           <h1 className="font-app text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-light uppercase flex flex-col">
             <span>DRIVE THE ELITE</span>
             <span className="bg-gradient-to-r from-gold via-[#ffe2a4] to-gold bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(255,189,55,0.15)]">
@@ -40,7 +38,6 @@ const Banner = () => {
           </div>
         </div>
 
-        {/* ─── RIGHT COLUMN: CAR IMAGE ─── */}
         <div className="flex justify-center lg:justify-end relative items-center group w-full mb-4 lg:mb-0">
           <div className="relative z-10 w-full max-w-[420px] sm:max-w-[520px] lg:max-w-[650px]">
             <Image

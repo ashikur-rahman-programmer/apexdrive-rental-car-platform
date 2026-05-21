@@ -11,6 +11,7 @@ import {
 } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import UpdateCarModal from "./UpdateCarModal";
 
 export default function AddedCarsCard({ cars }) {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function AddedCarsCard({ cars }) {
                 car.image ||
                 "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500"
               }
-              alt={car.carModel}
+              alt={car.name}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
@@ -73,11 +74,11 @@ export default function AddedCarsCard({ cars }) {
           <div className="p-5 flex flex-col flex-grow">
             <div className="flex justify-between items-start gap-2 mb-2">
               <h3 className="text-lg font-bold text-light tracking-wide group-hover:text-gold transition-colors">
-                {car.carModel}
+                {car.name}
               </h3>
               <div className="flex items-center text-gold font-mono font-bold text-lg">
                 <FiDollarSign className="text-sm shrink-0" />
-                {car.dailyPrice}
+                {car.dailyRentPrice}
                 <span className="text-[10px] text-light/40 font-sans font-normal lowercase ml-0.5">
                   /day
                 </span>
@@ -110,12 +111,7 @@ export default function AddedCarsCard({ cars }) {
             {/* অ্যাকশন বাটনসমূহ (Update & Delete) */}
             <div className="flex items-center gap-3 mt-auto">
               {/* আপডেট রুট */}
-              <Link
-                href={`/update-car/${car._id}`}
-                className="flex-1 bg-white/[0.03] border border-white/[0.06] text-light/80 hover:text-gold hover:border-gold/30 hover:bg-gold/5 text-center py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all"
-              >
-                <FiEdit2 className="text-xs" /> Update
-              </Link>
+              <UpdateCarModal car={car} />
 
               {/* ডিলিট বাটন */}
               <button

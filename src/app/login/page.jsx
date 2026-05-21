@@ -71,9 +71,7 @@ const LoginPage = () => {
           </h2>
         </div>
 
-        {/* 👑 HeroUI Form */}
         <Form onSubmit={handleEmailLogin} className="space-y-5">
-          {/* Email Field */}
           <div className="flex flex-col gap-2">
             <TextField
               isRequired
@@ -98,7 +96,6 @@ const LoginPage = () => {
             </TextField>
           </div>
 
-          {/* Password Field with 3 Criteria */}
           <div className="flex flex-col gap-2">
             <TextField
               isRequired

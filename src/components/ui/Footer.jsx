@@ -14,7 +14,6 @@ import {
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // ─── SOCIAL LINKS MATRIX ───
   const socials = [
     {
       id: 1,
@@ -37,7 +36,6 @@ const Footer = () => {
     },
   ];
 
-  // ─── USEFUL LINKS MATRIX ───
   const usefulLinks = [
     { id: 1, name: "Explore Fleet", href: "/explore-car" },
     { id: 2, name: "Available Cars", href: "/available-cars" },
@@ -46,7 +44,6 @@ const Footer = () => {
     { id: 5, name: "Contact HQ", href: "#contact" },
   ];
 
-  // ─── COMPLIANCE LINKS MATRIX ───
   const complianceLinks = [
     { id: 1, name: "Privacy Policy", href: "/privacy" },
     { id: 2, name: "Terms of Service", href: "/terms" },
@@ -55,13 +52,10 @@ const Footer = () => {
 
   return (
     <footer className="w-full bg-secondary border-t border-white/[0.03] pt-16 pb-8 px-4 sm:px-6 relative overflow-hidden">
-      {/* Subtle Background Accent Ring */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-radial-[circle,rgba(255,189,55,0.01)_0%,transparent_70%] pointer-events-none" />
 
       <div className="container mx-auto relative z-10">
-        {/* ─── TOP SECTION: GRID MATRIX ─── */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-12 border-b border-white/[0.03]">
-          {/* 🏢 COL 1: BRAND ARCHITECTURE (5-Cols) */}
           <div className="md:col-span-5 space-y-5">
             <Link href="/" className="inline-block">
               <span className="font-app text-xl font-bold tracking-[0.2em] text-light">
@@ -74,7 +68,6 @@ const Footer = () => {
               validation systems designed for the modern road.
             </p>
 
-            {/* SOCIAL ICONS ENGINE */}
             <div className="flex items-center gap-3 pt-2">
               {socials.map((social) => (
                 <a
@@ -91,7 +84,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* 🔗 COL 2: USEFUL LINKS (3-Cols) */}
           <div className="md:col-span-3 space-y-4">
             <h3 className="font-app text-xs uppercase tracking-widest text-light font-bold">
               Useful Links
@@ -111,7 +103,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* 📍 COL 3: CONTACT INFORMATION (4-Cols) */}
           <div className="md:col-span-4 space-y-4">
             <h3 className="font-app text-xs uppercase tracking-widest text-light font-bold">
               Contact Info
@@ -143,7 +134,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ─── BOTTOM SECTION: SUB-FOOTER (Copyright & Compliance) ─── */}
         <div className="pt-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-[11px] sm:text-xs text-light/30 font-normal">
           <div>
             &copy; {currentYear}{" "}

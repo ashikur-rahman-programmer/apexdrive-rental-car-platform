@@ -13,6 +13,7 @@ import { headers } from "next/headers";
 import Image from "next/image";
 import { ImBlocked } from "react-icons/im";
 import AddedCarsCard from "@/components/shared/AddedCarsCard";
+// import AddedCarsCard from "@/components/shared/AddedCarsCard";
 // import DeleteButton from "./DeleteButton";
 
 const MyAddedCarsPage = async () => {
@@ -130,6 +131,7 @@ const MyAddedCarsPage = async () => {
           </div>
         ) : (
           <AddedCarsCard cars={cars} />
+          // <></>
         )}
       </div>
     </section>

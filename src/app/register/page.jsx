@@ -72,7 +72,6 @@ const Register = () => {
           </h2>
         </div>
 
-        {/* 👑 HeroUI Form */}
         <Form onSubmit={handleRegister} className="space-y-5">
           {/* Name Field */}
           <div className="flex flex-col gap-2">
@@ -130,7 +129,7 @@ const Register = () => {
             </TextField>
           </div>
 
-          {/* Password Field with Validation */}
+          {/* Password Field   */}
           <div className="flex flex-col gap-2">
             <TextField
               isRequired
