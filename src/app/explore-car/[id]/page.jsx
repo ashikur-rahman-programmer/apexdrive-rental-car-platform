@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import BookingAlert from "@/components/shared/BookingAlert";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -25,6 +27,7 @@ const CarDetails = async ({ params }) => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      cache: "no-cache",
     },
   );
   const car = await res.json();
