@@ -1,19 +1,22 @@
 "use client";
 
 import { authClient, useSession } from "@/lib/auth-client";
+import { Spinner } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
 const AddCar = () => {
   const router = useRouter();
-  // const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
 
   const { data: session } = useSession();
   const user = session?.user;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setLoading(true);
 
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
@@ -49,6 +52,7 @@ const AddCar = () => {
 
     if (!res.ok) {
       toast.error("Something went wrong!");
+      setLoading(false);
     }
 
     const result = await res.json();
@@ -196,7 +200,13 @@ const AddCar = () => {
               type="submit"
               className="w-full sm:w-auto min-w-[160px] bg-gold text-primary font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-[#ffe2a4] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(255,189,55,0.15)]"
             >
-              Submit
+              {loading ? (
+                <>
+                  <span>Submitting...</span>
+                </>
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
         </form>
