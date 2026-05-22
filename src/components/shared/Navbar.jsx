@@ -68,7 +68,7 @@ const Navbar = () => {
           {isPending ? (
             <Spinner color="warning" />
           ) : user ? (
-            <li>
+            <li className="relative">
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="flex items-center focus:outline-none cursor-pointer"
