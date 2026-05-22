@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { FiMail, FiPhone, FiMapPin, FiClock, FiSend } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const ContactSection = () => {
   const handleSubmit = (e) => {
@@ -37,9 +37,11 @@ const ContactSection = () => {
 
   return (
     <section className="w-full bg-primary py-16 px-4 sm:px-6 relative overflow-hidden">
+      {/* Background Glow Effect */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-radial-[circle,rgba(255,189,55,0.015)_0%,transparent_70%] pointer-events-none" />
 
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto relative z-10 max-w-7xl">
+        {/* Header Section */}
         <div className="text-center flex flex-col items-center gap-2 mb-12">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none">
             Get In Touch
@@ -56,12 +58,16 @@ const ContactSection = () => {
           </p>
         </div>
 
+        {/* Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Info Side */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 w-full">
               {contactInfo.map((info) => (
-                <div
+                <motion.div
                   key={info.id}
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
                   className="premium-card bg-secondary border border-white/[0.04] rounded-2xl p-5 flex items-center gap-4 transition-all duration-300 hover:border-gold/20"
                 >
                   <div className="p-3 rounded-xl bg-gold/5 border border-gold/10 flex items-center justify-center">
@@ -75,10 +81,11 @@ const ContactSection = () => {
                       {info.value}
                     </span>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
+            {/* Decorative Engine Badge */}
             <div className="hidden lg:block premium-card bg-secondary/40 border border-dashed border-white/[0.02] rounded-2xl p-6 text-center">
               <span className="font-app text-lg font-bold tracking-widest text-light/20 block select-none">
                 APEXDRIVE ENGINE
@@ -86,6 +93,7 @@ const ContactSection = () => {
             </div>
           </div>
 
+          {/* Form Side */}
           <div className="lg:col-span-7">
             <form
               onSubmit={handleSubmit}
@@ -101,7 +109,7 @@ const ContactSection = () => {
                     type="text"
                     required
                     placeholder="John Doe"
-                    className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
+                    className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 focus:bg-primary/80 transition-all duration-300"
                   />
                 </div>
 
@@ -114,7 +122,7 @@ const ContactSection = () => {
                     type="email"
                     required
                     placeholder="johndoe@example.com"
-                    className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
+                    className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 focus:bg-primary/80 transition-all duration-300"
                   />
                 </div>
               </div>
@@ -128,7 +136,7 @@ const ContactSection = () => {
                   type="text"
                   required
                   placeholder="Fleet Booking Inquiry"
-                  className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
+                  className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 focus:bg-primary/80 transition-all duration-300"
                 />
               </div>
 
@@ -141,19 +149,20 @@ const ContactSection = () => {
                   rows="4"
                   required
                   placeholder="Tell us about your requirements..."
-                  className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300 resize-none"
+                  className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 focus:bg-primary/80 transition-all duration-300 resize-none"
                 />
               </div>
 
               {/* Submit Button */}
               <div className="pt-2">
-                <button
+                <motion.button
+                  whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gold text-primary font-semibold text-xs py-3.5 px-6 rounded-xl uppercase tracking-widest cursor-pointer transition-all duration-300 hover:bg-[#ffe2a4] hover:scale-[1.02] active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gold text-primary font-bold text-xs py-3.5 px-6 rounded-xl uppercase tracking-widest cursor-pointer transition-colors duration-300 hover:bg-[#ffe2a4] shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
                 >
-                  <FiSend className="text-sm" />
+                  <FiSend className="text-sm shrink-0" />
                   Transmit Message
-                </button>
+                </motion.button>
               </div>
             </form>
           </div>

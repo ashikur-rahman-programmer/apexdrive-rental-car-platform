@@ -3,12 +3,16 @@ import CarCard from "./CarCard";
 const AvailableCarsSection = async () => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_APEXDRIVE_SERVER_URL}/cars`,
+    { next: { revalidate: 30 } },
   );
   const cars = await res.json();
 
+  const availableCars = cars
+    .filter((car) => car.availability === true)
+    .slice(0, 6);
+
   return (
     <section className="w-full bg-primary py-16 px-4 sm:px-6">
-      {/* ─── SECTION HEADER ─── */}
       <div className="text-center flex flex-col items-center gap-2 mb-12">
         <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none">
           Available Cars
@@ -26,16 +30,19 @@ const AvailableCarsSection = async () => {
         </p>
       </div>
 
-      {/* ─── CARS GRID SYSTEM ─── */}
-      {/* Mobile: 1, Tablet: 2, Small Desktop: 3, Large Desktop: 4 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-        {cars
-          .filter((car) => car.availability === true)
-          .slice(0, 6)
-          .map((car) => (
+      {availableCars.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 max-w-7xl mx-auto">
+          {availableCars.map((car) => (
             <CarCard key={car._id} car={car} />
           ))}
-      </div>
+        </div>
+      ) : (
+        <div className="w-full flex flex-col items-center justify-center py-12 text-center">
+          <p className="text-sm text-light/40 tracking-wide uppercase">
+            No premium vehicles are currently available.
+          </p>
+        </div>
+      )}
     </section>
   );
 };

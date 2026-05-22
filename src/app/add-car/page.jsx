@@ -5,6 +5,7 @@ import { Spinner } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const AddCar = () => {
   const router = useRouter();
@@ -60,7 +61,12 @@ const AddCar = () => {
 
   return (
     <section className="w-full bg-primary py-16 px-4 sm:px-6 relative overflow-hidden flex justify-center items-center">
-      <div className="w-full max-w-3xl bg-secondary border border-white/[0.04] p-6 sm:p-10 rounded-3xl relative z-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="w-full max-w-3xl bg-secondary border border-white/[0.04] p-6 sm:p-10 rounded-3xl relative z-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+      >
         <div className="text-center flex flex-col items-center gap-2 mb-10">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none">
             Management
@@ -75,7 +81,12 @@ const AddCar = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div className="flex flex-col gap-2">
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="flex flex-col gap-2"
+            >
               <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
                 Car Name
               </label>
@@ -86,9 +97,14 @@ const AddCar = () => {
                 placeholder="Enter Car Name"
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
               />
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-2">
+            <motion.div
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="flex flex-col gap-2"
+            >
               <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
                 Daily Rent Price ($)
               </label>
@@ -99,9 +115,14 @@ const AddCar = () => {
                 placeholder="Enter Price"
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
               />
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-2">
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="flex flex-col gap-2"
+            >
               <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
                 Car Type
               </label>
@@ -125,9 +146,14 @@ const AddCar = () => {
                   Sport
                 </option>
               </select>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-2">
+            <motion.div
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="flex flex-col gap-2"
+            >
               <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
                 Seat Capacity
               </label>
@@ -138,10 +164,15 @@ const AddCar = () => {
                 placeholder="Seat no..."
                 className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
               />
-            </div>
+            </motion.div>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="flex flex-col gap-2"
+          >
             <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
               Image URL
             </label>
@@ -152,9 +183,14 @@ const AddCar = () => {
               placeholder="Enter car image url"
               className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
             />
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-2">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.35 }}
+            className="flex flex-col gap-2"
+          >
             <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
               Pickup Location
             </label>
@@ -165,9 +201,14 @@ const AddCar = () => {
               placeholder="Enter location"
               className="w-full bg-primary border border-white/[0.06] rounded-xl px-4 py-3 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300"
             />
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-2">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
+            className="flex flex-col gap-2"
+          >
             <label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
               Description
             </label>
@@ -178,9 +219,14 @@ const AddCar = () => {
               placeholder="Write premium descriptions about vehicle condition, features, etc..."
               className="w-full bg-primary border border-white/[0.06] rounded-xl p-4 text-sm text-light placeholder-light/20 focus:outline-none focus:border-gold/30 transition-colors duration-300 resize-none"
             />
-          </div>
+          </motion.div>
 
-          <div className="flex items-center gap-3 bg-primary/40 border border-white/[0.03] p-4 rounded-xl w-fit">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 0.45 }}
+            className="flex items-center gap-3 bg-primary/40 border border-white/[0.03] p-4 rounded-xl w-fit"
+          >
             <input
               type="checkbox"
               id="availability"
@@ -193,24 +239,26 @@ const AddCar = () => {
             >
               Available for Rent
             </label>
-          </div>
+          </motion.div>
 
           <div className="pt-4 border-t border-white/[0.03]">
-            <button
+            <motion.button
+              whileTap={{ scale: 0.97 }}
               type="submit"
-              className="w-full sm:w-auto min-w-[160px] bg-gold text-primary font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-[#ffe2a4] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(255,189,55,0.15)]"
+              className="w-full sm:w-auto min-w-[160px] bg-gold text-primary font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-[#ffe2a4] disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(255,189,55,0.15)] flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
+                  <Spinner size="xs" color="current" />
                   <span>Submitting...</span>
                 </>
               ) : (
                 "Submit"
               )}
-            </button>
+            </motion.button>
           </div>
         </form>
-      </div>
+      </motion.div>
     </section>
   );
 };

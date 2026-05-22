@@ -5,6 +5,7 @@ import { authClient } from "@/lib/auth-client";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { FiSearch } from "react-icons/fi";
+import * as motion from "framer-motion/client";
 
 const ExploreCar = async ({ searchParams }) => {
   const params = await searchParams;
@@ -38,17 +39,33 @@ const ExploreCar = async ({ searchParams }) => {
         />
 
         {cars.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-5 lg:gap-6 w-full">
-            {cars.map((car) => (
-              <CarCard key={car._id} car={car} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full">
+            {cars.map((car, index) => (
+              <motion.div
+                key={car._id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.05,
+                  ease: "easeOut",
+                }}
+              >
+                <CarCard car={car} />
+              </motion.div>
             ))}
           </div>
         ) : (
-          <div className="w-full bg-secondary border border-white/[0.04] rounded-2xl py-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            className="w-full bg-secondary border border-white/[0.04] rounded-2xl py-16 text-center"
+          >
             <p className="text-sm text-light/40">
               No vehicles found matching your criteria.
             </p>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

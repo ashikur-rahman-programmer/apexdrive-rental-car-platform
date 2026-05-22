@@ -10,6 +10,7 @@ import {
   FiMapPin,
   FiUserCheck,
 } from "react-icons/fi";
+import * as motion from "framer-motion/client";
 
 const MyBookingsPage = async () => {
   const session = await auth.api.getSession({
@@ -53,7 +54,12 @@ const MyBookingsPage = async () => {
 
       <div aria-label="Booked Cars Grid">
         {bookings.length === 0 ? (
-          <div className="text-center py-20 bg-secondary/30 border border-white/[0.03] rounded-3xl">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            className="text-center py-20 bg-secondary/30 border border-white/[0.03] rounded-3xl"
+          >
             <p className="text-light/30 text-sm">
               You haven't reserved any luxury vehicles yet.
             </p>
@@ -63,10 +69,10 @@ const MyBookingsPage = async () => {
             >
               Explore Cars <FiArrowRight />
             </Link>
-          </div>
+          </motion.div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {bookings.map((booking) => {
+            {bookings.map((booking, index) => {
               const formattedDate = new Date(
                 booking.bookingDate,
               ).toLocaleDateString("en-US", {
@@ -76,8 +82,11 @@ const MyBookingsPage = async () => {
               });
 
               return (
-                <div
+                <motion.div
                   key={booking._id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }}
                   className="bg-secondary border border-white/[0.06] rounded-2xl p-5 flex flex-col gap-4 hover:border-gold/20 hover:shadow-[0_10px_30px_rgba(212,175,55,0.02)] transition-all group duration-300"
                 >
                   <div className="relative h-44 w-full rounded-xl overflow-hidden bg-primary/40 shrink-0">
@@ -153,7 +162,7 @@ const MyBookingsPage = async () => {
                   >
                     View Details <FiArrowRight className="text-xs" />
                   </Link>
-                </div>
+                </motion.div>
               );
             })}
           </div>

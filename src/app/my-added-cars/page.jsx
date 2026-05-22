@@ -6,6 +6,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { ImBlocked } from "react-icons/im";
 import AddedCarsCard from "@/components/shared/AddedCarsCard";
+import * as motion from "framer-motion/client";
 
 const MyAddedCarsPage = async () => {
   const session = await auth.api.getSession({
@@ -57,7 +58,12 @@ const MyAddedCarsPage = async () => {
         </div>
 
         {cars.length === 0 ? (
-          <div className="w-full border border-white/[0.04] bg-secondary rounded-3xl p-12 text-center flex flex-col items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            className="w-full border border-white/[0.04] bg-secondary rounded-3xl p-12 text-center flex flex-col items-center justify-center"
+          >
             <div className="h-16 w-16 rounded-full bg-white/[0.02] flex items-center justify-center border border-white/[0.05] text-gold text-xl mb-4">
               <ImBlocked />
             </div>
@@ -73,9 +79,15 @@ const MyAddedCarsPage = async () => {
             >
               List a Car
             </Link>
-          </div>
+          </motion.div>
         ) : (
-          <AddedCarsCard cars={cars} />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <AddedCarsCard cars={cars} />
+          </motion.div>
         )}
       </div>
     </section>

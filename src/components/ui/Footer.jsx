@@ -10,6 +10,7 @@ import {
   FiGithub,
   FiInstagram,
 } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -52,14 +53,19 @@ const Footer = () => {
 
   return (
     <footer className="w-full bg-secondary border-t border-white/[0.03] pt-16 pb-8 px-4 sm:px-6 relative overflow-hidden">
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-radial-[circle,rgba(255,189,55,0.01)_0%,transparent_70%] pointer-events-none" />
+      {/* Premium Ambient Background Glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-radial-[circle,rgba(255,189,55,0.012)_0%,transparent_70%] pointer-events-none" />
 
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto relative z-10 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 pb-12 border-b border-white/[0.03]">
+          {/* Brand Info Architecture */}
           <div className="md:col-span-5 space-y-5">
-            <Link href="/" className="inline-block">
-              <span className="font-app text-xl font-bold tracking-[0.2em] text-light">
-                APEX<span className="text-gold">DRIVE</span>
+            <Link href="/" className="inline-block group">
+              <span className="font-app text-xl font-bold tracking-[0.25em] text-light transition-colors duration-300">
+                APEX
+                <span className="text-gold group-hover:text-[#ffe2a4] transition-colors">
+                  DRIVE
+                </span>
               </span>
             </Link>
             <p className="text-xs sm:text-sm text-light/50 font-normal leading-relaxed max-w-sm">
@@ -68,24 +74,28 @@ const Footer = () => {
               validation systems designed for the modern road.
             </p>
 
+            {/* Micro-interactive Social Badges */}
             <div className="flex items-center gap-3 pt-2">
               {socials.map((social) => (
-                <a
+                <motion.a
                   key={social.id}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-9 h-9 rounded-xl bg-primary border border-white/[0.04] flex items-center justify-center text-light/60 text-sm transition-all duration-300 hover:border-gold/30 hover:text-gold hover:scale-105"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-9 h-9 rounded-xl bg-primary border border-white/[0.04] flex items-center justify-center text-light/60 text-sm transition-colors duration-300 hover:border-gold/30 hover:text-gold"
                 >
                   {social.icon}
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
 
+          {/* Navigation Links System */}
           <div className="md:col-span-3 space-y-4">
-            <h3 className="font-app text-xs uppercase tracking-widest text-light font-bold">
+            <h3 className="font-app text-xs uppercase tracking-[0.2em] text-light font-bold">
               Useful Links
             </h3>
             <ul className="space-y-2.5">
@@ -93,7 +103,7 @@ const Footer = () => {
                 <li key={link.id}>
                   <Link
                     href={link.href}
-                    className="text-xs sm:text-sm text-light/50 font-normal transition-colors duration-300 hover:text-gold flex items-center gap-1 group"
+                    className="text-xs sm:text-sm text-light/50 font-medium transition-colors duration-300 hover:text-gold flex items-center gap-1 group"
                   >
                     <span className="w-0 h-[1px] bg-gold group-hover:w-2 transition-all duration-300" />
                     {link.name}
@@ -103,16 +113,17 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Corporate / Contact Metadata */}
           <div className="md:col-span-4 space-y-4">
-            <h3 className="font-app text-xs uppercase tracking-widest text-light font-bold">
+            <h3 className="font-app text-xs uppercase tracking-[0.2em] text-light font-bold">
               Contact Info
             </h3>
             <ul className="space-y-3.5">
-              <li className="flex items-start gap-3 text-xs sm:text-sm text-light/50">
+              <li className="flex items-start gap-3 text-xs sm:text-sm text-light/50 font-medium">
                 <FiMapPin className="text-gold text-base mt-0.5 flex-shrink-0" />
                 <span>Gulshan, Dhaka, Bangladesh</span>
               </li>
-              <li className="flex items-center gap-3 text-xs sm:text-sm text-light/50">
+              <li className="flex items-center gap-3 text-xs sm:text-sm text-light/50 font-medium">
                 <FiPhone className="text-gold text-base flex-shrink-0" />
                 <a
                   href="tel:+8801700000000"
@@ -121,7 +132,7 @@ const Footer = () => {
                   +880 1700-000000
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-xs sm:text-sm text-light/50">
+              <li className="flex items-center gap-3 text-xs sm:text-sm text-light/50 font-medium">
                 <FiMail className="text-gold text-base flex-shrink-0" />
                 <a
                   href="mailto:support@apexdrive.com"
@@ -134,10 +145,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-[11px] sm:text-xs text-light/30 font-normal">
+        {/* Bottom Compliance & Rights Section */}
+        <div className="pt-8 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-[11px] sm:text-xs text-light/30 font-medium">
           <div>
             &copy; {currentYear}{" "}
-            <span className="text-light/40 font-medium font-app tracking-wider">
+            <span className="text-light/40 font-bold font-app tracking-wider">
               APEXDRIVE
             </span>
             . All Rights Reserved.
@@ -148,7 +160,7 @@ const Footer = () => {
               <Link
                 key={link.id}
                 href={link.href}
-                className="hover:text-gold transition-colors duration-300"
+                className="hover:text-gold transition-colors duration-300 font-medium"
               >
                 {link.name}
               </Link>

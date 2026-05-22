@@ -15,6 +15,7 @@ import {
   FiXCircle,
   FiTrendingUp,
 } from "react-icons/fi";
+import * as motion from "framer-motion/client";
 
 const CarDetails = async ({ params }) => {
   const { id } = await params;
@@ -44,8 +45,18 @@ const CarDetails = async ({ params }) => {
 
   return (
     <section className="w-full bg-primary py-12 px-4 sm:px-6 lg:px-8 min-h-screen flex justify-center items-center">
-      <div className="w-full max-w-5xl bg-secondary border border-white/[0.04] rounded-3xl p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 relative overflow-hidden">
-        <div className="w-full h-[300px] sm:h-[400px] lg:h-full relative rounded-2xl overflow-hidden border border-white/[0.06]">
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="w-full max-w-5xl bg-secondary border border-white/[0.04] rounded-3xl p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 relative overflow-hidden"
+      >
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          className="w-full h-[300px] sm:h-[400px] lg:h-full relative rounded-2xl overflow-hidden border border-white/[0.06]"
+        >
           <Image
             src={car.imageUrl}
             alt={car.name}
@@ -64,9 +75,14 @@ const CarDetails = async ({ params }) => {
               {car.availability ? "Available" : "Unavailable"}
             </span>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col justify-between space-y-6">
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          className="flex flex-col justify-between space-y-6"
+        >
           <div>
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none inline-block">
               Luxury Rental
@@ -87,7 +103,12 @@ const CarDetails = async ({ params }) => {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-primary/50 border border-white/[0.03] p-4 rounded-xl flex items-center gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="bg-primary/50 border border-white/[0.03] p-4 rounded-xl flex items-center gap-3"
+            >
               <FiGrid className="text-gold text-xl shrink-0" />
               <div>
                 <p className="text-[10px] uppercase tracking-wider text-light/40">
@@ -97,9 +118,14 @@ const CarDetails = async ({ params }) => {
                   {car.carType}
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-primary/50 border border-white/[0.03] p-4 rounded-xl flex items-center gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.25 }}
+              className="bg-primary/50 border border-white/[0.03] p-4 rounded-xl flex items-center gap-3"
+            >
               <FiUsers className="text-gold text-xl shrink-0" />
               <div>
                 <p className="text-[10px] uppercase tracking-wider text-light/40">
@@ -109,9 +135,14 @@ const CarDetails = async ({ params }) => {
                   {car.seatCapacity} Seats
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-primary/50 border border-white/[0.03] p-4 rounded-xl flex items-center gap-3 col-span-2">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="bg-primary/50 border border-white/[0.03] p-4 rounded-xl flex items-center gap-3 col-span-2"
+            >
               <FiMapPin className="text-gold text-xl shrink-0" />
               <div>
                 <p className="text-[10px] uppercase tracking-wider text-light/40">
@@ -121,19 +152,29 @@ const CarDetails = async ({ params }) => {
                   {car.location}
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="space-y-2">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.35 }}
+            className="space-y-2"
+          >
             <h3 className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2">
               <FiFileText className="text-gold" /> Overview
             </h3>
             <p className="text-sm text-light/70 leading-relaxed bg-primary/30 border border-white/[0.02] p-4 rounded-xl max-h-[150px] overflow-y-auto custom-scrollbar">
               {car.description}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
+            className="pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
+          >
             <div>
               <p className="text-[10px] uppercase tracking-wider text-light/40">
                 Daily Rate
@@ -148,9 +189,9 @@ const CarDetails = async ({ params }) => {
             </div>
 
             <BookingAlert car={car} />
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

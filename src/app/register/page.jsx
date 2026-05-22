@@ -16,6 +16,7 @@ import { FaGoogle } from "react-icons/fa";
 import { FiLock, FiMail, FiUser, FiImage } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { authClient } from "@/lib/auth-client";
+import { motion } from "framer-motion";
 
 const Register = () => {
   const router = useRouter();
@@ -59,7 +60,12 @@ const Register = () => {
 
   return (
     <section className="w-full bg-primary min-h-screen flex justify-center items-center py-12 px-4 sm:px-6 relative overflow-hidden">
-      <div className="w-full max-w-md bg-secondary border border-white/[0.04] p-8 sm:p-10 rounded-3xl relative z-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="w-full max-w-md bg-secondary border border-white/[0.04] p-8 sm:p-10 rounded-3xl relative z-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+      >
         <div className="text-center flex flex-col items-center gap-2 mb-8">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none">
             Join Us
@@ -74,7 +80,12 @@ const Register = () => {
 
         <Form onSubmit={handleRegister} className="space-y-5">
           {/* Name Field */}
-          <div className="flex flex-col gap-2">
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.05 }}
+            className="flex flex-col gap-2"
+          >
             <TextField isRequired name="name" type="text" className="w-full">
               <Label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2 mb-2">
                 <FiUser className="text-gold" /> Full Name
@@ -86,10 +97,15 @@ const Register = () => {
               />
               <FieldError className="text-[11px] font-medium text-red-400 tracking-wide mt-1" />
             </TextField>
-          </div>
+          </motion.div>
 
           {/* Email Field */}
-          <div className="flex flex-col gap-2">
+          <motion.div
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="flex flex-col gap-2"
+          >
             <TextField
               isRequired
               name="email"
@@ -112,10 +128,15 @@ const Register = () => {
               />
               <FieldError className="text-[11px] font-medium text-red-400 tracking-wide mt-1" />
             </TextField>
-          </div>
+          </motion.div>
 
-          {/* Photo URL Field */}
-          <div className="flex flex-col gap-2">
+          {/* Image URL Field */}
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+            className="flex flex-col gap-2"
+          >
             <TextField isRequired name="image" type="url" className="w-full">
               <Label className="text-xs font-medium tracking-wider text-light/50 uppercase flex items-center gap-2 mb-2">
                 <FiImage className="text-gold" /> Image URL
@@ -127,10 +148,15 @@ const Register = () => {
               />
               <FieldError className="text-[11px] font-medium text-red-400 tracking-wide mt-1" />
             </TextField>
-          </div>
+          </motion.div>
 
-          {/* Password Field   */}
-          <div className="flex flex-col gap-2">
+          {/* Password Field */}
+          <motion.div
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="flex flex-col gap-2"
+          >
             <TextField
               isRequired
               name="password"
@@ -159,36 +185,60 @@ const Register = () => {
               />
               <FieldError className="text-[11px] font-medium text-red-400 tracking-wide mt-1" />
             </TextField>
-          </div>
+          </motion.div>
 
-          <div className="pt-2">
+          {/* Submit Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.25 }}
+            className="pt-2"
+          >
             <Button
+              whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={loading}
-              className="w-full bg-gold text-primary font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-[#ffe2a4] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(255,189,55,0.15)]"
+              className="w-full bg-gold text-primary font-bold text-xs uppercase tracking-widest py-3.5 px-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-[#ffe2a4] disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(255,189,55,0.15)]"
             >
               {loading ? "Creating Account..." : "Register"}
             </Button>
-          </div>
+          </motion.div>
         </Form>
 
-        <div className="relative flex py-5 items-center">
+        {/* Divider */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="relative flex py-5 items-center"
+        >
           <div className="flex-grow border-t border-white/[0.04]"></div>
           <span className="flex-shrink mx-4 text-light/30 text-[10px] uppercase tracking-widest">
             Or continue with
           </span>
           <div className="flex-grow border-t border-white/[0.04]"></div>
-        </div>
+        </motion.div>
 
-        <button
+        {/* Social Register */}
+        <motion.button
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.35 }}
+          whileTap={{ scale: 0.98 }}
           onClick={handleGoogleLogin}
           type="button"
-          className="w-full bg-primary border border-white/[0.06] text-light font-semibold text-xs uppercase tracking-wider py-3.5 px-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/[0.02] hover:border-white/[0.1] active:scale-[0.98] flex items-center justify-center gap-2"
+          className="w-full bg-primary border border-white/[0.06] text-light font-semibold text-xs uppercase tracking-wider py-3.5 px-6 rounded-xl cursor-pointer transition-all duration-300 hover:bg-white/[0.02] hover:border-white/[0.1] flex items-center justify-center gap-2"
         >
           <FaGoogle className="text-gold text-sm" /> Google Register
-        </button>
+        </motion.button>
 
-        <p className="text-center text-xs text-light/40 mt-8">
+        {/* Login Link */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+          className="text-center text-xs text-light/40 mt-8"
+        >
           Already have an account?{" "}
           <Link
             href="/login"
@@ -196,8 +246,8 @@ const Register = () => {
           >
             Login here
           </Link>
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </section>
   );
 };

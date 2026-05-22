@@ -1,27 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import {
-  FiCalendar,
-  FiDollarSign,
-  FiMapPin,
-  FiEdit2,
-  FiTrash2,
-} from "react-icons/fi";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { FiCalendar, FiDollarSign, FiMapPin } from "react-icons/fi";
+import { motion } from "framer-motion";
 import UpdateCarModal from "./UpdateCarModal";
 import DeleteAlert from "./DeleteAlert";
 
-export default function AddedCarsCard({ cars }) {
-  const router = useRouter();
-
+const AddedCarsCard = ({ cars }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {cars.map((car) => (
-        <div
+      {cars.map((car, index) => (
+        <motion.div
           key={car._id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }}
           className="group border border-white/[0.05] bg-secondary rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:border-gold/20 transition-all duration-300 flex flex-col"
         >
           {/* কার ইমেজ ও টাইপ ট্যাগ */}
@@ -54,7 +47,7 @@ export default function AddedCarsCard({ cars }) {
           {/* কার ডিটেইলস বডি */}
           <div className="p-5 flex flex-col flex-grow">
             <div className="flex justify-between items-start gap-2 mb-2">
-              <h3 className="uppercase text-lg font-bold text-light tracking-wide group-hover:text-gold transition-colors">
+              <h3 className="uppercase text-lg font-bold text-light tracking-wide group-hover:text-gold transition-colors(duration-300) line-clamp-1">
                 {car.name}
               </h3>
               <div className="flex items-center text-gold font-mono font-bold text-lg">
@@ -76,14 +69,20 @@ export default function AddedCarsCard({ cars }) {
             <div className="space-y-2 border-t border-white/[0.04] pt-4 mb-5">
               <div className="flex items-center gap-2 text-light/40 text-xs">
                 <FiMapPin className="text-gold text-sm shrink-0" />
-                <span>{car.location || "Not Specified"}</span>
+                <span className="line-clamp-1">
+                  {car.location || "Not Specified"}
+                </span>
               </div>
               <div className="flex items-center gap-2 text-light/40 text-xs">
                 <FiCalendar className="text-gold/60 text-sm shrink-0" />
                 <span>
                   Added:{" "}
                   {car.createdAt
-                    ? new Date(car.createdAt).toLocaleDateString()
+                    ? new Date(car.createdAt).toLocaleDateString("en-US", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })
                     : "Recent"}
                 </span>
               </div>
@@ -91,15 +90,14 @@ export default function AddedCarsCard({ cars }) {
 
             {/* অ্যাকশন বাটনসমূহ (Update & Delete) */}
             <div className="flex items-center gap-3 mt-auto">
-              {/* আপডেট রুট */}
               <UpdateCarModal car={car} />
-
-              {/* ডিলিট বাটন */}
               <DeleteAlert carId={car._id} carName={car.name} />
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
-}
+};
+
+export default AddedCarsCard;

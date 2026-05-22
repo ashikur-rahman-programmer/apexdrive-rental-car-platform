@@ -1,6 +1,7 @@
 "use client";
 
 import { FiShield, FiClock, FiCheckCircle, FiTrendingUp } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const WhyChooseUs = () => {
   const features = [
@@ -36,9 +37,11 @@ const WhyChooseUs = () => {
 
   return (
     <section className="w-full bg-primary py-16 px-4 sm:px-6 relative overflow-hidden">
+      {/* Ambient Gradient Blur */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-radial-[circle,rgba(255,189,55,0.015)_0%,transparent_70%] pointer-events-none" />
 
-      <div className="relative z-10">
+      <div className="relative z-10 container mx-auto max-w-7xl">
+        {/* Section Header */}
         <div className="text-center flex flex-col items-center gap-2 mb-12">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold bg-gold/5 px-4 py-1.5 rounded-full border border-gold/10 select-none">
             Why Choose Us
@@ -55,25 +58,30 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
+        {/* Interactive Feature Architecture Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {features.map((feature) => (
-            <div
+            <motion.div
               key={feature.id}
-              className="premium-card bg-secondary border border-white/[0.04] rounded-2xl p-6 flex flex-col items-start gap-4 transition-all duration-300 hover:border-gold/20"
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="premium-card bg-secondary border border-white/[0.04] rounded-2xl p-6 flex flex-col items-start gap-4 transition-all duration-300 hover:border-gold/20 hover:shadow-[0_15px_30px_rgba(0,0,0,0.4)] group"
             >
-              <div className="p-3 rounded-xl bg-gold/5 border border-gold/10 flex items-center justify-center shadow-[0_4px_20px_rgba(255,189,55,0.05)] group-hover:scale-110 transition-transform duration-300">
+              {/* Animated Icon Ring Shield */}
+              <div className="p-3 rounded-xl bg-gold/5 border border-gold/10 flex items-center justify-center shadow-[0_4px_20px_rgba(255,189,55,0.05)] group-hover:scale-105 group-hover:bg-gold/10 group-hover:border-gold/20 transition-all duration-300">
                 {feature.icon}
               </div>
 
+              {/* Text Configuration Meta */}
               <div className="space-y-2">
-                <h3 className="text-base font-semibold text-light tracking-wide uppercase font-app">
+                <h3 className="text-base font-semibold text-light tracking-wide uppercase font-app group-hover:text-gold transition-colors duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-light/60 font-normal leading-relaxed">
+                <p className="text-xs sm:text-sm text-light/60 font-medium leading-relaxed">
                   {feature.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
