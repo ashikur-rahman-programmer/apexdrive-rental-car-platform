@@ -1,9 +1,11 @@
 export const dynamic = "force-dynamic";
 
+import NotFound from "@/app/not-found";
 import BookingAlert from "@/components/shared/BookingAlert";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import {
   FiGrid,
   FiUsers,
@@ -30,14 +32,14 @@ const CarDetails = async ({ params }) => {
       cache: "no-cache",
     },
   );
+  if (!res.ok) {
+    notFound();
+  }
+
   const car = await res.json();
 
-  if (!car) {
-    return (
-      <div className="min-h-screen bg-primary flex justify-center items-center text-light">
-        <p className="text-xl font-semibold">Car not found!</p>
-      </div>
-    );
+  if (!car || !car._id) {
+    notFound();
   }
 
   return (

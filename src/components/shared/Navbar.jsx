@@ -66,7 +66,7 @@ const Navbar = () => {
           </li>
 
           {isPending ? (
-            <Spinner color="success" />
+            <Spinner color="warning" />
           ) : user ? (
             <li>
               <button
